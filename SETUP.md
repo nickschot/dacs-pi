@@ -3,11 +3,8 @@
 
 ## Basic Hadoop installation
 **Create a Hadoop user**
-
 `addgroup hadoop`
-
 `adduser --ingroup hadoop hduser`
-
 `adduser hduser sudo`
 
 
