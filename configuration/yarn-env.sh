@@ -36,7 +36,7 @@ JAVA_HEAP_MAX=-Xmx1000m
 
 # For setting YARN specific HEAP sizes please use this
 # Parameter and set appropriately
-# YARN_HEAPSIZE=1000
+YARN_HEAPSIZE=768
 
 # check envvars which might override default args
 if [ "$YARN_HEAPSIZE" != "" ]; then

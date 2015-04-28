@@ -17,4 +17,20 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/fs/hadoop/tmp</value>
+    <description>Sets the operating directory for Hadoop data.
+    </description>
+  </property>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://localhost:54310</value>
+    <description>The name of the default file system.  A URI whose
+    scheme and authority determine the FileSystem implementation.
+    The URI's scheme determines the config property (fs.SCHEME.impl) naming
+    the FileSystem implementation class.  The URI's authority is used to
+    determine the host, port, etc. for a filesystem.  
+    </description>
+  </property>
 </configuration>
