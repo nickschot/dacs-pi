@@ -2,45 +2,45 @@
 `apt-get install libssl-dev libsnappy-dev`
 
 ## Basic Hadoop installation
-** Create a Hadoop user **
+**Create a Hadoop user**
 `addgroup hadoop`
 `adduser --ingroup hadoop hduser`
 `adduser hduser sudo`
 
-** Setup SSH for Hadoop **
+**Setup SSH for Hadoop**
 `su - hduser`
 `ssh-keygen -t rsa -P ""`
 `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys`
 `chmod 700 ~/.ssh`
 `chmod 600 ~/.ssh/authorized_keys`
 
-** Unpack Hadoop **
+**Unpack Hadoop**
 `sudo tar vxzf hadoop-2.6.0.tar.gz -C /usr/local`
 `cd /usr/local`
 `sudo mv hadoop-2.6.0 hadoop`
 `sudo chown -R hduser:hadoop hadoop`
 
-** Add Hadoop environment variables **
+**Add Hadoop environment variables**
 Add to `/home/hduser/.bashrc`
 `export HADOOP_INSTALL=/usr/local/hadoop`
 `export PATH=$PATH:$HADOOP_INSTALL/bin`
 
-** Reboot and test **
+**Reboot and test**
 `sudo reboot`
 `hadoop version`
 
 ## Basic Hadoop configuration
-** Configure environment **
+**Configure environment**
 `nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh`
 Set: `export HADOOP_HEAPSIZE=768`
 
 `nano /usr/local/hadoop/etc/hadoop/yarn-env.sh`
 Set: `YARN_HEAPSIZE=768`
 
-** Configuration files **
+**Configuration files**
 Edit `core-site.xml`, `mapred-site.xml`, `hdfs-site.xml` (see GIT repo)
 
-** Basic folder setup **
+**Basic folder setup**
 Create tmp folder
 `sudo mkdir -p /fs/hadoop/tmp`
 `sudo chown hduser:hadoop /fs/hadoop/tmp`
