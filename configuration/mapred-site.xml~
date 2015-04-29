@@ -1,7 +1,7 @@
 <configuration>
   <property>
     <name>mapreduce.jobtracker.address</name>
-    <value>localhost:54311</value>
+    <value>node01:54311</value>
     <description>The host and port that the MapReduce job tracker runs
     at.  If "local", then jobs are run in-process as a single map
     and reduce task.
@@ -11,4 +11,13 @@
       <name>mapreduce.framework.name</name>
       <value>yarn</value>
    </property>
+
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>384</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>768</value>
+    </property>
 </configuration>
