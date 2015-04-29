@@ -1,7 +1,7 @@
 <configuration>
   <property>
     <name>mapreduce.jobtracker.address</name>
-    <value>node01:54311</value>
+    <value>localhost:54311</value>
     <description>The host and port that the MapReduce job tracker runs
     at.  If "local", then jobs are run in-process as a single map
     and reduce task.
