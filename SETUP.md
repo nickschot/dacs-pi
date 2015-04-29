@@ -68,3 +68,9 @@ Add hostnames of nodes which should be data/task nodes to the slaves configurati
 
 Make sure `/fs/hadoop/tmp` is empty on all nodes and reformat the datanodes from the master node with `hdfs namenode -format`  
 Start Hadoop from the master node and check the status of the nodes on http://IP_ADDR:50070  
+
+## Dynamically adding slave nodes
+Make sure the new node(s) are configured the same as the other nodes (up until the namenode format).  
+First, add the new nodes hostname to the slaves file on the master node. Then start the datanode by running the following command on the new node: `/usr/local/hadoop/sbin/hadoop-daemon.sh start datanode`  
+
+TODO: start YARN on new node?
