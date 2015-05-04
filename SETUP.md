@@ -52,6 +52,7 @@ Format working directory
 ## Starting Hadoop
 `/usr/local/hadoop/sbin/start-dfs.sh`  
 `/usr/local/hadoop/sbin/start-yarn.sh`  
+`/usr/local/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver`  
 
 Go to http://IP_ADDR:50070 to see the Hadoop status page.  
 
