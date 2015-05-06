@@ -51,4 +51,9 @@
         <value>2</value>
         <description>The maximum allocation for every container request at the RM, in terms of virtual CPU cores. Requests higher than this won't take effect, and will get capped to this value.</description>
     </property>
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+        <description>Configuration to enable or disable log aggregation</description>
+    </property>
 </configuration>
