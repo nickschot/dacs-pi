@@ -74,4 +74,6 @@ Start Hadoop from the master node and check the status of the nodes on http://IP
 Make sure the new node(s) are configured the same as the other nodes (up until the namenode format).  
 First, add the new nodes hostname to the slaves file on the master node. Then start the datanode by running the following command on the new node: `/usr/local/hadoop/sbin/hadoop-daemon.sh start datanode`  
 
-TODO: start YARN on new node?
+Check if it's correctly added to the cluster on the Hadoop status page.  
+
+Then start the Yarn nodemanager by executing: `/usr/local/hadoop/sbin/yarn-daemon.sh start nodemanager`  
