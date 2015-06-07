@@ -1,3 +1,6 @@
+# How to: install & configure native Hadoop on RPi2
+This guide mostly contains shell commands and tasks in order to succesfully install and configure a basic Hadoop 2.6.0 YARN on a cluster of Raspberry Pi 2 Model B boards.
+
 ## Prerequisites for native Hadoop
 `apt-get install libssl-dev libsnappy-dev`
 
@@ -22,7 +25,7 @@
 `sudo chown -R hduser:hadoop hadoop`  
 
 **Add Hadoop environment variables**  
-Add to `/home/hduser/.bashrc`  
+Add the following lines to `/home/hduser/.bashrc`  
 `export HADOOP_INSTALL=/usr/local/hadoop`  
 `export PATH=$PATH:$HADOOP_INSTALL/bin`  
 
@@ -31,6 +34,8 @@ Add to `/home/hduser/.bashrc`
 `hadoop version`  
 
 ## Basic Hadoop configuration
+The basic Hadoop configuration should happen on each node in the cluster. Preconfigured configuration and environment files are supplied in the configuration folder in the repository.
+
 **Configure environment**  
 `nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh`  
 Set: `export HADOOP_HEAPSIZE=768`  
@@ -39,7 +44,7 @@ Set: `export HADOOP_HEAPSIZE=768`
 Set: `YARN_HEAPSIZE=768`  
 
 **Configuration files**
-Edit `core-site.xml`, `mapred-site.xml`, `hdfs-site.xml` (see GIT repo)  
+Edit `core-site.xml`, `mapred-site.xml`, `hdfs-site.xml` and `yarn-site.xml` (see configuartion folder in the repository for preconfigured files).
 
 **Basic folder setup**  
 Create tmp folder  
@@ -57,18 +62,18 @@ Format working directory
 Go to http://IP_ADDR:50070 to see the Hadoop status page.  
 
 ## Going multinode 
-Give each node a hostname in /etc/hostname (eg. node01, node02 etc.)  
-Comment the line containing 127.0.1.1 with a # in /etc/hosts  
+Give each node a hostname in `/etc/hostname` (eg. node01, node02 etc.)  
+Comment the line containing 127.0.1.1 with a # in `/etc/hosts`  
 
-Add hostname of the node which should be secondary namenode to masters configuration file in `/usr/local/hadoop/etc/hadoop/masters` (one per line)  
-Add hostnames of nodes which should be data/task nodes to the slaves configuration file in `/usr/local/hadoop/etc/hadoop/slaves` (one per line)  
+Add the hostname of the node which should be secondary namenode to masters configuration file in `/usr/local/hadoop/etc/hadoop/masters` on the master node (one per line)  
+Add the hostnames of nodes which should be data/task nodes to the slaves configuration file in `/usr/local/hadoop/etc/hadoop/slaves` on the master node (one per line)  
 
 - [ ] TODO: generate new SSH key for new node as in the beginning of this document  
 
-`sudo reboot`  
+Reboot the nodes: `sudo reboot`  
 
 Make sure `/fs/hadoop/tmp` is empty on all nodes and reformat the datanodes from the master node with `hdfs namenode -format`  
-Start Hadoop from the master node and check the status of the nodes on http://IP_ADDR:50070  
+Now start Hadoop from the master node and check the status of the nodes on http://IP_ADDR:50070  
 
 ## Dynamically adding slave nodes
 Make sure the new node(s) are configured the same as the other nodes (up until the namenode format).  
@@ -76,4 +81,4 @@ First, add the new nodes hostname to the slaves file on the master node. Then st
 
 Check if it's correctly added to the cluster on the Hadoop status page.  
 
-Then start the Yarn nodemanager by executing: `/usr/local/hadoop/sbin/yarn-daemon.sh start nodemanager`  
+After that start the Yarn nodemanager by executing: `/usr/local/hadoop/sbin/yarn-daemon.sh start nodemanager`  
