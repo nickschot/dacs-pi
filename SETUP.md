@@ -1,6 +1,8 @@
 # How to: install & configure native Hadoop on RPi2
 This guide mostly contains shell commands and tasks in order to succesfully install and configure a basic Hadoop 2.6.0 YARN on a cluster of Raspberry Pi 2 Model B boards.
 
+Hadoop 2.6.0 compiled natively for the Raspberry Pi 2 and the required configuration files for a cluster setup can be found on: https://github.com/nickschot/dacs-pi
+
 ## Prerequisites for native Hadoop
 `apt-get install libssl-dev libsnappy-dev`
 
